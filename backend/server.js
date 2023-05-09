@@ -1,6 +1,11 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db.js");
 const chats = require("./data/data.js");
+const colors = require("colors");
 const app = express();
+dotenv.config();
+connectDB();
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -22,5 +27,5 @@ app.get("/api/chat/:id", (req, res) => {
   res.send(singleChat);
 });
 app.listen(3000, () => {
-  console.log("Website on port 3000");
+  console.log("Website on port 3000".yellow.bold);
 });
