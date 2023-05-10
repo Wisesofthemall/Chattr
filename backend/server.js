@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const chats = require("./data/data.js");
 const colors = require("colors");
+const router = require("./routes/userRoutes.js");
 const app = express();
 dotenv.config();
 connectDB();
@@ -12,20 +13,12 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Pur app is ced0m");
 });
 
-app.get("/api/chat", (req, res) => {
-  res.send(chats);
-});
-
-app.get("/api/chat/:id", (req, res) => {
-  const { id } = req.params;
-  const singleChat = chats.find((c) => c._id === id);
-
-  res.send(singleChat);
-});
+app.use("/api/user", router);
 app.listen(3000, () => {
   console.log("Website on port 3000".yellow.bold);
 });
