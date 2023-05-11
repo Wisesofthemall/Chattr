@@ -4,6 +4,7 @@ const connectDB = require("./config/db.js");
 const chats = require("./data/data.js");
 const colors = require("colors");
 const router = require("./routes/userRoutes.js");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 const app = express();
 dotenv.config();
 connectDB();
@@ -19,6 +20,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", router);
+
+app.use(notFound);
+app.use(errorHandler);
 app.listen(3000, () => {
   console.log("Website on port 3000".yellow.bold);
 });
