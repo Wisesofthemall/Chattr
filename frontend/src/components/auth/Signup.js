@@ -8,6 +8,8 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import React, { useState } from "react";
 
 function Signup() {
@@ -18,6 +20,7 @@ function Signup() {
   const [pic, setPic] = useState();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const toast = useToast();
   const postDetails = (pics) => {
     setLoading(true);
@@ -42,9 +45,8 @@ function Signup() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setPic(data.url.toString());
-          console.log(data.url.toString());
+
           setLoading(false);
         })
         .catch((err) => {
@@ -63,7 +65,63 @@ function Signup() {
     }
     const url = `https://api.cloudinary.com/v1_1/dfexwnfds/image/upload`;
   };
-  const submitHandler = () => {};
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !confirmpassword) {
+      toast({
+        title: "Please Fill all the Fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      setLoading(false);
+      return;
+    }
+    if (password !== confirmpassword) {
+      toast({
+        title: "Passwords Does Not Match",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      setLoading(false);
+      return;
+    }
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/user",
+        { name, email, password, pic },
+        config,
+      );
+      toast({
+        title: "Registration Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      history.push("/chats");
+    } catch (error) {
+      toast({
+        title: "Error Occured",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      setLoading(false);
+    }
+  };
   return (
     <VStack spacing="5px">
       <FormControl id="first-name" isRequired>
