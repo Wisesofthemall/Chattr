@@ -35,7 +35,15 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 const authUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.query;
+  let { email, password } = req.query;
+  console.log(email == null, email);
+  if (email === undefined) {
+    email = req.body.email;
+    password = req.body.password;
+    console.log("CHANGED", email, password);
+  }
+
+  console.log(req);
 
   const userExist = await User.findOne({ email });
   console.log(userExist);
@@ -53,5 +61,19 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
+const allUsers = asyncHandler(async (req, res) => {
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } },
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
+
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+  res.send(users);
+});
 module.exports.registerUser = registerUser;
 module.exports.authUser = authUser;
+module.exports.allUsers = allUsers;
