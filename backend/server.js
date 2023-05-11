@@ -15,6 +15,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+app.get("/api/chat", (req, res) => {
+  res.send("Pur app is ced0m");
+});
 
 app.use("/api/user", router);
 

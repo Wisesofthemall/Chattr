@@ -38,11 +38,9 @@ function Login() {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.get(
-        "/api/user/login",
-        { email, password },
-        config,
-      );
+      const { data } = await axios.get("/api/user/login", {
+        params: { email: email, password: password },
+      });
       toast({
         title: "Registration Successful",
         status: "success",
