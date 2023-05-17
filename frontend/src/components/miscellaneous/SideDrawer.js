@@ -4,6 +4,9 @@ import {
   Button,
   Menu,
   MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
@@ -11,6 +14,7 @@ import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { ChatState } from "../../Context/ChatProvider";
+import ProfileModal from "./ProfileModal";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -48,7 +52,6 @@ const SideDrawer = () => {
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              utf{" "}
               <Avatar
                 size={"sm"}
                 cursor="pointer"
@@ -56,6 +59,13 @@ const SideDrawer = () => {
                 src={user.pic}
               />
             </MenuButton>
+            <MenuList>
+              <ProfileModal user={user}>
+                {/* <MenuItem>My Profile</MenuItem> */}
+              </ProfileModal>
+              <MenuDivider />
+              <MenuItem>Logout</MenuItem>
+            </MenuList>
           </Menu>
         </div>
       </Box>

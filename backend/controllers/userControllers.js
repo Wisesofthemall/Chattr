@@ -5,12 +5,14 @@ const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
 
   if (!name || !email || !password) {
+    console.log("ERROR HEERE");
     res.status(400);
     throw new Error("Please Enter all the Fields");
   }
 
   const userExist = await User.findOne({ email });
   if (userExist) {
+    console.log("ERROR HEERE");
     res.status(400);
     throw new Error("User Already exists");
   }
@@ -30,23 +32,21 @@ const registerUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
+    console.log("ERROR HEERE");
     res.status(400);
     throw new Error("Failed to create user");
   }
 });
 const authUser = asyncHandler(async (req, res) => {
-  let { email, password } = req.query;
-  console.log(email == null, email);
+  let { email, password } = req.body;
+  console.log("emial", req.body);
   if (email === undefined) {
     email = req.body.email;
     password = req.body.password;
-    console.log("CHANGED", email, password);
   }
 
-  console.log(req);
-
   const userExist = await User.findOne({ email });
-  console.log(userExist);
+
   if (userExist && (await userExist.matchPassword(password))) {
     res.json({
       _id: userExist._id,

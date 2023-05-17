@@ -7,6 +7,7 @@ const accessChat = asyncHandler(async (req, res) => {
 
   if (!userId) {
     console.log("USERID NOT SENT");
+    console.log('ERROR HEERE')
     return res.sendStatus(400);
   }
 
@@ -40,6 +41,7 @@ const accessChat = asyncHandler(async (req, res) => {
       );
       res.status(200).send(FullChat);
     } catch (error) {
+      console.log('ERROR HEERE')
       res.status(400);
       throw new Error(error.message);
     }
@@ -61,6 +63,7 @@ const fetchChat = asyncHandler(async (req, res) => {
         res.status(200).send(results);
       });
   } catch (error) {
+    console.log('ERROR HEERE')
     res.status(400).send(error.message);
   }
 });
@@ -91,6 +94,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
       .populate("groupAdmin", "-password");
     res.status(200).json(fullGroupChat);
   } catch (error) {
+    console.log('ERROR HEERE')
     res.status(400);
     throw new Error(error.message);
   }

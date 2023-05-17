@@ -11,8 +11,8 @@ const {
 
 const chatRouter = express.Router();
 
-chatRouter.post("/", protect, accessChat);
-chatRouter.get("/", protect, fetchChat);
+chatRouter.post("/", accessChat);
+chatRouter.get("/", fetchChat);
 chatRouter.post("/group", protect, createGroupChat);
 chatRouter.put("/rename", protect, renameGroupChat);
 chatRouter.put("/groupremove", protect, removeFromGroup);
