@@ -38,9 +38,11 @@ function Login() {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.get("/api/user/login", {
-        params: { email: email, password: password },
+      const { data } = await axios.post("/api/user/login", {
+        email: email,
+        password: password,
       });
+
       toast({
         title: "Registration Successful",
         status: "success",
@@ -48,6 +50,7 @@ function Login() {
         isClosable: true,
         position: "top-right",
       });
+
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       history.push("/chats");
