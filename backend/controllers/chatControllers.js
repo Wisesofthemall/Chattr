@@ -3,18 +3,18 @@ const Chat = require("../models/chatModel");
 const User = require("../models/userModel");
 
 const accessChat = asyncHandler(async (req, res) => {
-  const { userId } = req.body;
+  const { userId, _id } = req.body;
 
   if (!userId) {
     console.log("USERID NOT SENT");
-    console.log('ERROR HEERE')
+    console.log("ERROR HEERE,accessChat ");
     return res.sendStatus(400);
   }
 
   var isChat = await Chat.find({
     isGroupChat: false,
     $and: [
-      { users: { $elemMatch: { $eq: req.user._id } } },
+      { users: { $elemMatch: { $eq: _id } } },
       { users: { $elemMatch: { $eq: userId } } },
     ],
   })
@@ -31,7 +31,7 @@ const accessChat = asyncHandler(async (req, res) => {
     var chatData = {
       chatName: "sender",
       isGroupChat: false,
-      users: [req.user._id, userId],
+      users: [_id, userId],
     };
     try {
       const createdChat = await Chat.create(chatData);
@@ -41,7 +41,7 @@ const accessChat = asyncHandler(async (req, res) => {
       );
       res.status(200).send(FullChat);
     } catch (error) {
-      console.log('ERROR HEERE')
+      console.log("ERROR HEERE, accessChatpt2");
       res.status(400);
       throw new Error(error.message);
     }
@@ -49,8 +49,9 @@ const accessChat = asyncHandler(async (req, res) => {
 });
 
 const fetchChat = asyncHandler(async (req, res) => {
+  const { userID } = req.query;
   try {
-    Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
+    Chat.find({ users: { $elemMatch: { $eq: userID } } })
       .populate("users", "-password")
       .populate("groupAdmin", "-password")
       .populate("latestMessage")
@@ -63,7 +64,7 @@ const fetchChat = asyncHandler(async (req, res) => {
         res.status(200).send(results);
       });
   } catch (error) {
-    console.log('ERROR HEERE')
+    console.log("ERROR HEERE, fetchChat", error.message);
     res.status(400).send(error.message);
   }
 });
@@ -94,7 +95,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
       .populate("groupAdmin", "-password");
     res.status(200).json(fullGroupChat);
   } catch (error) {
-    console.log('ERROR HEERE')
+    console.log("ERROR HEERE, createGroupChat");
     res.status(400);
     throw new Error(error.message);
   }
