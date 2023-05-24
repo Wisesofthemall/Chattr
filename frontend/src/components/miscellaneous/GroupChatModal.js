@@ -42,7 +42,9 @@ export default function GroupChatModal({ children }) {
     }
     setSelectedUsers([...selectedUsers, userToAdd]);
   };
-  const handleDelete = () => {};
+  const handleDelete = (delUser) => {
+    setSelectedUsers(selectedUsers.filter((sel) => sel._id !== delUser._id));
+  };
   const handleSearch = async (query) => {
     setSearch(query);
     if (!query) {
@@ -58,7 +60,6 @@ export default function GroupChatModal({ children }) {
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
-      console.log(data);
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -70,7 +71,52 @@ export default function GroupChatModal({ children }) {
       });
     }
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    if (!groupChatName || !selectedUsers) {
+      toast({
+        title: "Please fill all the fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const { data } = await axios.post(
+        "api/chat/group",
+        {
+          name: groupChatName,
+          users: JSON.stringify(selectedUsers.map((u) => u._id)),
+        },
+        config,
+      );
+      console.log(data);
+      setChats([data, ...chats]);
+      onClose();
+      toast({
+        title: "New Group Chat Created",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    } catch (error) {
+      toast({
+        title: "Failed to Create the Chat!",
+        description: error.response?.data,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+  };
   return (
     <div>
       <span onClick={onOpen}>{children}</span>
