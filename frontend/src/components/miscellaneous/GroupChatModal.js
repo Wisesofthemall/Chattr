@@ -96,7 +96,7 @@ export default function GroupChatModal({ children }) {
         },
         config,
       );
-      console.log(data);
+
       setChats([data, ...chats]);
       onClose();
       toast({
