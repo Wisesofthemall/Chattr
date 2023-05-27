@@ -6,6 +6,7 @@ const colors = require("colors");
 const router = require("./routes/userRoutes.js");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 const chatRouter = require("./routes/chatRoutes.js");
+const messageRouter = require("./routes/messageRouter.js");
 const app = express();
 dotenv.config();
 connectDB();
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/user", router);
 app.use("/api/chat", chatRouter);
+app.use("/api/message", messageRouter);
 
 app.use(notFound);
 app.use(errorHandler);
