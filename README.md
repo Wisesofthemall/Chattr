@@ -18,6 +18,11 @@ Chattr is a real-time chat application that allows users to communicate with eac
 
 1. Real-time Chat: Chattr enables users to have real-time conversations with each other. Messages are instantly delivered to the recipient without the need to refresh the page.
 
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/145c0ada-ab6c-450e-ae4f-86fa8121d74c
+
+
+
 2. User Registration and Authentication: Chattr uses JWT for user authentication. Users can create an account, log in, and maintain their session throughout the chat experience.
 
 3. Personalized Profiles: Users can set up and customize their profiles by adding a profile picture and a display name. This helps to create a more personalized chat experience.
