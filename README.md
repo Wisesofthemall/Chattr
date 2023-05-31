@@ -1,4 +1,4 @@
-# Chattr App
+# Chattr
 
 Chattr is a real-time chat application that allows users to communicate with each other in a seamless and interactive way. It leverages several technologies to provide a smooth user experience.
 
