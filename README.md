@@ -19,17 +19,38 @@ Chattr is a real-time chat application that allows users to communicate with eac
 1. Real-time Chat: Chattr enables users to have real-time conversations with each other. Messages are instantly delivered to the recipient without the need to refresh the page.
 
 
-https://github.com/Wisesofthemall/Chattr/assets/101741874/145c0ada-ab6c-450e-ae4f-86fa8121d74c
+
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/b2a5dc1d-cd82-4ea2-9a15-e484f7a7bafc
+
+
 
 
 
 2. User Registration and Authentication: Chattr uses JWT for user authentication. Users can create an account, log in, and maintain their session throughout the chat experience.
 
+
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/fd543a2e-7b4f-424a-a628-e615a0c71a40
+
+
+
 3. Personalized Profiles: Users can set up and customize their profiles by adding a profile picture and a display name. This helps to create a more personalized chat experience.
 
 4. Group Chats: Chattr supports group conversations, allowing users to create and join chat rooms based on shared interests or topics. Multiple participants can chat simultaneously in a group setting.
 
+
+
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/3b9a2de8-98d6-441b-b61a-e7cdd49a74c3
+
+
+
+
 5. Message Notifications: Users receive real-time notifications when they receive new messages, ensuring they never miss any important conversations.
+
+<img width="1440" alt="Screen Shot 2023-05-31 at 7 59 24 AM" src="https://github.com/Wisesofthemall/Chattr/assets/101741874/d998eb0a-638a-4e70-bc2e-b7d00c1052ec">
+
 
 ## Technologies Explained
 
