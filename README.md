@@ -105,4 +105,6 @@ Chattr is deployed on Heroku, a cloud platform that allows easy hosting, scaling
 
 Chattr is a powerful real-time chat application built using React, Socket.io, MongoDB, Express, Node.js, JWT, Chakra-UI, Tailwind CSS, and deployed on Heroku. It provides an engaging and personalized chat experience, enabling users to connect and communicate seamlessly. With its user-friendly interface and real-time messaging capabilities, Chattr offers a modern and efficient solution for online communication.
 
+## Deployed Webisite  https://chattr-d.herokuapp.com/
+
 
