@@ -35,7 +35,10 @@ https://github.com/Wisesofthemall/Chattr/assets/101741874/5836c8a0-6d56-4f71-80f
 
 
 
-https://github.com/Wisesofthemall/Chattr/assets/101741874/fd543a2e-7b4f-424a-a628-e615a0c71a40
+
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/dd97c249-46b5-4440-b045-bd39fda401cd
+
 
 
 
@@ -46,14 +49,18 @@ https://github.com/Wisesofthemall/Chattr/assets/101741874/fd543a2e-7b4f-424a-a62
 
 
 
-https://github.com/Wisesofthemall/Chattr/assets/101741874/3b9a2de8-98d6-441b-b61a-e7cdd49a74c3
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/c45b97e3-7e4d-4bab-9166-abc89bd64fd8
+
+
 
 
 
 
 5. Message Notifications: Users receive real-time notifications when they receive new messages, ensuring they never miss any important conversations.
 
-<img width="1440" alt="Screen Shot 2023-05-31 at 7 59 24 AM" src="https://github.com/Wisesofthemall/Chattr/assets/101741874/d998eb0a-638a-4e70-bc2e-b7d00c1052ec">
+
+<img width="1440" alt="Screen Shot 2023-05-31 at 7 59 24 AM" src="https://github.com/Wisesofthemall/Chattr/assets/101741874/f9356da2-c29c-41be-ac75-dbc3ff28cebf">
 
 
 ## Technologies Explained
