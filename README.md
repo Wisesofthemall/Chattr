@@ -21,7 +21,11 @@ Chattr is a real-time chat application that allows users to communicate with eac
 
 
 
-https://github.com/Wisesofthemall/Chattr/assets/101741874/b2a5dc1d-cd82-4ea2-9a15-e484f7a7bafc
+
+
+https://github.com/Wisesofthemall/Chattr/assets/101741874/5836c8a0-6d56-4f71-80f9-c5d00f315b7f
+
+
 
 
 
